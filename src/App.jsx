@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BandwidthTest from "./components/BandwidthTest";
+import UploadTest from "./components/UploadTest";
 
 import "./App.css";
 
@@ -14,11 +15,11 @@ function App() {
 
   return (
     <div className="app">
-      <h1>React Bandwidth Test</h1>
+      <h1>Vimeo Bandwidth Test</h1>
 
       <form className="video-form" onSubmit={handleSubmit}>
         <label>
-          Enter the Vimeo video ID here :
+          Enter the Vimeo video ID here
           <input
             type="text"
             value={videoId}
@@ -29,6 +30,7 @@ function App() {
         <button type="submit">Load video</button>
       </form>
       {currentVideoId && <BandwidthTest videoId={currentVideoId} />}
+      <UploadTest />
     </div>
   );
 }
