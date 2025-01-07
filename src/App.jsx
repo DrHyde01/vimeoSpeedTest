@@ -20,14 +20,11 @@ function App() {
       <form className="video-form" onSubmit={handleSubmit}>
         <label>
           Enter the Vimeo video ID here
-          <input
-            type="text"
-            value={videoId}
-            onChange={(e) => setVideoId(e.target.value)}
-            placeholder="e.g., 12345678"
-          />
+          <input type="text" value={videoId} onChange={(e) => setVideoId(e.target.value)} placeholder="12345678" />
         </label>
-        <button type="submit">Load video</button>
+        <button type="submit" disabled={!videoId}>
+          Load video
+        </button>
       </form>
       {currentVideoId && <BandwidthTest videoId={currentVideoId} />}
       <UploadTest />

@@ -6,8 +6,6 @@ const BandwidthTest = ({ videoId }) => {
 
   const vimeoVideoUrl = `https://vimeo.com/api/oembed.json?url=https://player.vimeo.com/${videoId}`;
 
-  console.log(vimeoVideoUrl);
-
   const testBandwidth = async () => {
     try {
       setLoading(true);
