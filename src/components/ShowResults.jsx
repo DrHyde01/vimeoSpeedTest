@@ -18,10 +18,10 @@ const ShowResults = ({ bandwidthSpeed, uploadSpeed }) => {
         </p>
       </div>
       {isDownloadSufficient && isUploadSufficient ? (
-        <p style={{ color: "green" }}>Your network meets Vimeo&apos;s requirements for streaming.</p>
+        <p style={{ color: "green" }}>✅ Your network meets Vimeo&apos;s requirements for streaming.</p>
       ) : (
         <p style={{ color: "red" }}>
-          Your network does not meet Vimeo&apos;s requirements for streaming. Please check your internet connection.
+          ⛔️ Your network does not meet Vimeo&apos;s requirements for streaming. Please check your internet connection.
         </p>
       )}
     </div>
