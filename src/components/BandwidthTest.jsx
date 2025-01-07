@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const BandwidthTest = ({ videoId }) => {
-  const [bandwidth, setBandwidth] = useState(null);
+const BandwidthTest = ({ videoId, onComplete }) => {
+  const [bandwidthSpeed, setBandwidthSpeed] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const vimeoVideoUrl = `https://vimeo.com/api/oembed.json?url=https://player.vimeo.com/${videoId}`;
@@ -30,9 +30,10 @@ const BandwidthTest = ({ videoId }) => {
       const downloadDuration = (endTime - startTimestamp) / 1000; // in seconds
 
       // Step 3 : Calculate bandwidth
-      const bandwidth = fileSize / downloadDuration / 1024 / 1024; // in Mbps
+      const bandwidthSpeedMbps = fileSize / downloadDuration / 1024 / 1024; // in Mbps
 
-      setBandwidth(bandwidth.toFixed(2));
+      setBandwidthSpeed(bandwidthSpeedMbps.toFixed(2));
+      onComplete(bandwidthSpeedMbps.toFixed(2));
     } catch (error) {
       console.error("Error during bandwidth test:", error);
     } finally {
@@ -46,7 +47,7 @@ const BandwidthTest = ({ videoId }) => {
       <button onClick={testBandwidth} disabled={loading}>
         {loading ? "Testing..." : "Start Test"}
       </button>
-      {bandwidth && <p>Your bandwidth: {bandwidth} Mbps</p>}
+      {bandwidthSpeed && <p>Your bandwidth: {bandwidthSpeed} Mbps</p>}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const UploadTest = () => {
+const UploadTest = ({ onComplete }) => {
   const [uploadSpeed, setUploadSpeed] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -26,6 +26,7 @@ const UploadTest = () => {
       const uploadSpeedMbps = (fileSizeInBytes * 8) / (timeTakenInSeconds * 1_000_000); // Convert to Mbps
 
       setUploadSpeed(uploadSpeedMbps.toFixed(2));
+      onComplete(uploadSpeedMbps.toFixed(2));
     } catch (error) {
       console.error("Error testing upload speed:", error);
     } finally {
