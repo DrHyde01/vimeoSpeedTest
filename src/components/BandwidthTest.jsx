@@ -20,7 +20,7 @@ const BandwidthTest = ({ videoId, onComplete }) => {
       const startTimestamp = Date.now();
       const videoResponse = await fetch(videoUrl, {
         method: "GET",
-        headers: { Range: "bytes=0-999999" },
+        headers: { Range: "bytes=0-99999999" },
       });
 
       const blob = await videoResponse.blob();
@@ -28,6 +28,8 @@ const BandwidthTest = ({ videoId, onComplete }) => {
 
       const fileSize = blob.size;
       const downloadDuration = (endTime - startTimestamp) / 1000; // in seconds
+
+      console.log("File size:", fileSize);
 
       // Step 3 : Calculate bandwidth
       const bandwidthSpeedMbps = fileSize / downloadDuration / 1024 / 1024; // in Mbps
